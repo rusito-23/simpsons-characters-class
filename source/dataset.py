@@ -22,7 +22,7 @@ def build_dataset(labels, ncount):
         for j in range(count):
             _image_path = os.path.join(label_folder, _images[j])
 
-            img = cv2.imread(_image_path, cv2.IMREAD_GRAYSCALE)
+            img = cv2.imread(_image_path)
             img = cv2.resize(img, (IMSIZE, IMSIZE))
 
             train_images.append(img)
