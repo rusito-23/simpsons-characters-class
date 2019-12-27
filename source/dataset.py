@@ -4,6 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import os
 import cv2
+from keras.utils import np_utils
 
 
 def build_dataset(labels, ncount):
@@ -48,4 +49,13 @@ def split_train_val(images, labels, val_percentage=0.1):
     return X_train, y_train, X_val, y_val
     
     
+def normalize(X_train, y_train, X_val, y_val):    
+    X_train = X_train.astype('float32')
+    X_val = X_val.astype('float32')
+    X_train = X_train / 255.0
+    X_val = X_val / 255.0
     
+    y_train = np_utils.to_categorical(y_train)
+    y_val = np_utils.to_categorical(y_val)
+    
+    return X_train, y_train, X_val, y_val
