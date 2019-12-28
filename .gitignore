@@ -136,6 +136,8 @@ dmypy.json
 
 # End of https://www.gitignore.io/api/macos,python
 
+## CUSTOM ##
+
 # Dataset
 the-simpsons-characters-dataset
 the-simpsons-characters-dataset.zip
