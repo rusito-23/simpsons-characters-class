@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# coding: utf-8
+
 from .constants import IMSIZE
 import numpy as np
 import pandas as pd

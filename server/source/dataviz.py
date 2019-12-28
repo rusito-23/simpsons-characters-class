@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# coding: utf-8
+
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -5,7 +8,7 @@ def implot(img, label):
     plt.imshow(img)
     plt.xlabel(label)
     plt.show()
-    
+
 def implotr(imgs, lbls, labels, r):
     plt.figure(figsize = (10, 10))
     for i in range(r):
@@ -15,7 +18,7 @@ def implotr(imgs, lbls, labels, r):
         plt.xlabel(labels[lbls[i]])
     plt.subplots_adjust(hspace=0.2)
     plt.show()
-    
+
 def implot_colorbar(img, label):
     plt.imshow(img)
     plt.grid(False)
