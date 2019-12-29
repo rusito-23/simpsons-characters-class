@@ -4,7 +4,7 @@
 import os
 import numpy as np
 import pandas as pd
-from .constants import TRAINSET_PATH
+from utils.constants import TRAINSET_PATH
 import matplotlib.pyplot as plt
 
 

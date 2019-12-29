@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-from .constants import IMSIZE
+from utils.constants import IMSIZE
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -14,7 +14,7 @@ def build_dataset(trainset_path, labels, ncount):
     train_images = []
     train_labels = []
 
-    for label in labels):
+    for label in labels:
         label_folder_path = os.path.join(trainset_path, label)
 
         for image in os.listdir(label_folder_path):
