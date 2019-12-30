@@ -8,8 +8,11 @@ pandas
 matplotlib
 
 opencv-contrib-python
+pillow
 
-tensorflow
+tensorflow==1.14
 keras
 
 Flask
+
+
