@@ -9,6 +9,7 @@ from flask import Flask, request, jsonify
 from PIL import Image
 import cv2
 import requests
+import onnxruntime
 
 LABELS = [
 'maggie_simpson',
@@ -48,30 +49,31 @@ LABELS = [
 
 app = Flask(__name__)
 
+sess = onnxruntime.InferenceSession('../../model/lesimpson.onnx')
+
 @app.route('/lesimpson/predict/', methods=['POST'])
 def image_classifier():
+
     # Decoding and pre-processing base64 image
     image = request.files["image"]
     image = Image.open(BytesIO(image.read()))
+    image = image.convert("RGB")
     image = np.array(image)
+    image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
     image = cv2.resize(image, (50, 50))
+    image = image / 255
 
-    payload = {
-        "instances": [{'in': image.tolist()}]
-    }
+    # Pass the image through the model
+    _in = sess.get_inputs()[0]
+    _out = sess.get_outputs()[0]
 
-    # Making POST request
-    r = requests.post('http://localhost:8501/v1/models/lesimpson:predict', json=payload)
+    out = sess.run([_out.name],
+            {_in.name: np.array([image.astype(np.float32)])})[0]
 
-    # Decoding results from TensorFlow Serving server
-    pred = json.loads(r.content.decode('utf-8'))['predictions'][0]
-
-    i = 0
-    for p in pred:
-        if p != 0:
-            prediction = LABELS[i]
-            break
-        i += 1
+    pred_index = np.argmax(out)
+    prediction = LABELS[pred_index]
 
     # Returning JSON response to the frontend
-    return jsonify({"index": i, "pred": prediction})
+    return jsonify({
+        "prediction": prediction
+    })
