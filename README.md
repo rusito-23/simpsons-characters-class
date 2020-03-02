@@ -19,14 +19,14 @@ The model is a simple Convolutional Neural Network with the following structure:
 
 ### Dataset preprocessing
 
-In order to train the model, I used the (Kaggle Simpsons Dataset)[https://www.kaggle.com/alexattia/the-simpsons-characters-dataset] from alexattia.
+In order to train the model, I used the [Kaggle Simpsons Dataset](https://www.kaggle.com/alexattia/the-simpsons-characters-dataset) from alexattia.
 
-One of the main challenges from this dataset was the data preprocessing, as there were several labels (classes) with missing data, or some labels with two much data (like Homer Simpson). The data cleaning process can be found (here)[server/notebooks/study.ipynb].
+One of the main challenges from this dataset was the data preprocessing, as there were several labels (classes) with missing data, or some labels with two much data (like Homer Simpson). The data cleaning process can be found [here](server/notebooks/study.ipynb).
 
 ### Model prediction
 
-The model performs with a `86.34% accuracy` on a validation set. Although it does not perform well on real life human pictures ((check it here)[server/notebooks/predict.ipynb]).
+The model performs with a `86.34% accuracy` on a validation set. Although it does not perform well on real life human pictures ([check it here](server/notebooks/predict.ipynb)).
 
 ### Model deployment
 
-As the objective of this project is to learn about CNNs and the different uses that can be made of them, I proposed to setup a deployment environment using ONNX Runtime (the ONNX conversion procedure can be found (here)[server/notebooks/onnx-conversion.ipynb]). The final goal is to expose an API using Flask within a Docker environment to perform the prediction. This is still WIP. 
+As the objective of this project is to learn about CNNs and the different uses that can be made of them, I proposed to setup a deployment environment using ONNX Runtime (the ONNX conversion procedure can be found [here](server/notebooks/onnx-conversion.ipynb)). The final goal is to expose an API using Flask within a Docker environment to perform the prediction. This is still WIP.
