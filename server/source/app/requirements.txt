@@ -1,0 +1,6 @@
+
+flask
+flask_restful
+
+pillow
+opencv-contrib-python
