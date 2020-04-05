@@ -7,7 +7,6 @@ import glob
 import cv2
 import itertools
 import logging
-from tensorflow.keras.utils import to_categorical
 from data_utils.clean import clean_labels
 from config import IMSIZE, TRAINSET_PATH
 from sklearn.model_selection import train_test_split as split_train_val

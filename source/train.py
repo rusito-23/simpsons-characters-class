@@ -15,7 +15,7 @@ logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger('simpsons')
 
 
-def train(dataset_path, output_path,
+def train(dataset_path, output_path, weights,
           epochs, batch_size, split):
 
     # create the autoincremental output folder
@@ -38,6 +38,10 @@ def train(dataset_path, output_path,
                   optimizer='adam',
                   metrics=['accuracy'])
     log.info('Model compiled')
+
+    if weights is not None:
+        model.load_weights(weights)
+        log.info(f'Weights load from {weights}')
 
     # callbacks
     callbacks = [
@@ -63,10 +67,11 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--dataset_path', dest='dataset_path')
     parser.add_argument('--output_path', dest='output_path')
+    parser.add_argument('--weights', default=None, dest='weights')
     parser.add_argument('--epochs', default=30, dest='epochs')
     parser.add_argument('--batch_size', default=4, dest='batch_size', type=int)
     parser.add_argument('--split', default=0.33, dest='split', type=float)
     args = parser.parse_args()
 
-    train(args.dataset_path, args.output_path,
+    train(args.dataset_path, args.output_path, args.weights,
           args.epochs, args.batch_size, args.split)
