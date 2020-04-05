@@ -60,14 +60,14 @@ This script will generate the following reports:
 - results per image in testset in `output_path/v<Version>/test_results.csv`
 - sklearn class report in `output_path/v<Version>/class_report.csv`
 - confusion matrix in `output_path/v<Version>/confusion_matrix.png`
-- test viz in `output_path/v<Version>/test_viz.png`
+- test viz in `output_path/v<Version>/samples.png`
 
 
 ## Results
 
 The [pretrained wheights](model/v1) included, gave the following results when tested:
 
-- [classification report](model/v1/class_report.tsv)
+- [classification report](model/v1/class_report.csv)
 - [test results](model/v1/test_results.csv)
 
 ##### Confusion matrix:

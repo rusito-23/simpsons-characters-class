@@ -63,16 +63,16 @@ def test(model_path, weights, testset_path):
     # write the classification report
     # this report includes only the test labels
     # which are less than the model labels
-    report_file_path = os.path.join(model_path, 'class_report.tsv')
+    report_file_path = os.path.join(model_path, 'class_report.csv')
     report = class_report(y_test_true,
                           y_pred_argmax,
                           labels=t_labels,
                           target_names=t_names,
-                          zero_division=False)
-    with open(report_file_path, 'w') as report_file:
-        report_file.write(report)
-        report_file.close()
-    log.info(f'Class report: \n {report} \n written in {report_file_path}')
+                          zero_division=False,
+                          output_dict=True)
+    clsf_report = pd.DataFrame(report).transpose()
+    clsf_report.to_csv(report_file_path, index= True)
+    log.info(f'Class report written in {report_file_path}')
 
     # confusion matrix
     conf_matrix_file_path = os.path.join(model_path, 'confusion_matrix.png')
