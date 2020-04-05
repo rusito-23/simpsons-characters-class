@@ -1,9 +1,8 @@
-# Le Simpson
-## Simpsons character classification
+# Simpsons character classification
 
-The main goal of this project is to achieve Simpsons character classification using a CNN written using the Keras framework.
+Using Keras with Tensorflow backend.
 
-### Model
+## Model
 
 The model is a simple Convolutional Neural Network with the following structure:
 
@@ -17,16 +16,22 @@ The model is a simple Convolutional Neural Network with the following structure:
 - (Dense + RELU + Dropout + Batch Normalization) x 2
 - Dense with SoftMax Activation
 
-### Dataset preprocessing
+## Dataset
 
-In order to train the model, I used the [Kaggle Simpsons Dataset](https://www.kaggle.com/alexattia/the-simpsons-characters-dataset) from alexattia.
+This repo uses the [Kaggle Simpsons Dataset](https://www.kaggle.com/alexattia/the-simpsons-characters-dataset) from alexattia.
 
-One of the main challenges from this dataset was the data preprocessing, as there were several labels (classes) with missing data, or some labels with two much data (like Homer Simpson). The data cleaning process can be found [here](server/notebooks/study.ipynb).
+One of the main challenges for this dataset was the data preprocessing, as there were several labels missing data, or some labels with two much data (i.e *Homer Simpson*).
 
-### Model prediction
+The data cleaning analisis can be found [here](server/notebooks/data_cleaning.ipynb).
 
-The model performs with a `86.34% accuracy` on a validation set. Although it does not perform well on real life human pictures ([check it here](server/notebooks/predict.ipynb)).
+## Train
 
-### Model deployment
+- download the [dataset](https://www.kaggle.com/alexattia/the-simpsons-characters-dataset).
+- install the [requirements](requirements.txt)
+- run the script:
 
-As the objective of this project is to learn about CNNs and the different uses that can be made of them, I proposed to setup a deployment environment using ONNX Runtime (the ONNX conversion procedure can be found [here](server/notebooks/onnx-conversion.ipynb)). The final goal is to expose an API using Flask within a Docker environment to perform the prediction. This is still WIP.
+```
+python source/train.py \
+	--dataset_path path/to/downloaded/dataset \
+	--output_path /path/to/model/output
+```

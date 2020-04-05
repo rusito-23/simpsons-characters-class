@@ -1,0 +1,14 @@
+jupyter
+jupyterlab
+
+kaggle
+
+scipy
+pandas
+matplotlib
+
+opencv-python
+pillow
+
+tensorflow
+sklearn
