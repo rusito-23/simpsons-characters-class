@@ -1,0 +1,26 @@
+                          precision    recall  f1-score   support
+
+  abraham_grampa_simpson       0.94      0.98      0.96        48
+  apu_nahasapeemapetilon       1.00      0.98      0.99        50
+            bart_simpson       1.00      0.94      0.97        49
+charles_montgomery_burns       1.00      0.94      0.97        50
+            chief_wiggum       1.00      1.00      1.00        47
+          comic_book_guy       0.84      0.94      0.89        50
+          edna_krabappel       0.96      0.92      0.94        50
+           homer_simpson       0.96      0.98      0.97        49
+           kent_brockman       0.94      0.96      0.95        48
+        krusty_the_clown       0.96      0.96      0.96        50
+           lenny_leonard       0.98      0.98      0.98        50
+            lisa_simpson       0.94      0.98      0.96        50
+           marge_simpson       1.00      0.96      0.98        49
+            mayor_quimby       0.96      0.98      0.97        50
+     milhouse_van_houten       0.96      0.98      0.97        50
+             moe_szyslak       1.00      0.98      0.99        50
+            ned_flanders       0.96      0.96      0.96        50
+            nelson_muntz       0.81      0.96      0.88        50
+       principal_skinner       0.95      0.82      0.88        50
+            sideshow_bob       0.95      0.82      0.88        50
+
+               micro avg       0.95      0.95      0.95       990
+               macro avg       0.96      0.95      0.95       990
+            weighted avg       0.96      0.95      0.95       990

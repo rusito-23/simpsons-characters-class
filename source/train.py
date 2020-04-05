@@ -4,14 +4,16 @@
 import argparse
 import os
 import logging
+from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint,\
+                            CSVLogger, TensorBoard
 from config import IN_SHAPE
 from train_utils.output_folder import create_output_folder
 from data_utils.dataset import SimpsonsDataset
 from model.vanilla import classification_model as cm
-from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint,\
-                            CSVLogger, TensorBoard
+from log import config_logger
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
-logging.basicConfig(level=logging.DEBUG)
+config_logger()
 log = logging.getLogger('simpsons')
 
 
@@ -30,10 +32,10 @@ def train(dataset_path, output_path, weights,
     with open(os.path.join(output_path, 'labels.txt'), 'w') as file:
         file.write('\n'.join(dataset.labels))
         file.close()
-    log.info(f'Classes: {len(dataset.labels)} - Labels wrote succesfully')
+    log.info(f'Classes: {dataset.num_classes} - Labels wrote succesfully')
 
     # create the model
-    model = cm(input_shape=IN_SHAPE, class_num=len(dataset.labels))
+    model = cm(input_shape=IN_SHAPE, class_num=dataset.num_classes)
     model.compile(loss='categorical_crossentropy',
                   optimizer='adam',
                   metrics=['accuracy'])
@@ -65,10 +67,10 @@ def train(dataset_path, output_path, weights,
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--dataset_path', dest='dataset_path')
-    parser.add_argument('--output_path', dest='output_path')
+    parser.add_argument('--dataset_path', required=True, dest='dataset_path')
+    parser.add_argument('--output_path', required=True, dest='output_path')
     parser.add_argument('--weights', default=None, dest='weights')
-    parser.add_argument('--epochs', default=30, dest='epochs')
+    parser.add_argument('--epochs', default=30, dest='epochs', type=int)
     parser.add_argument('--batch_size', default=4, dest='batch_size', type=int)
     parser.add_argument('--split', default=0.33, dest='split', type=float)
     args = parser.parse_args()
