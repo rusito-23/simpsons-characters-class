@@ -1,4 +1,8 @@
-# Simpsons character classification
+<center>
+<img src='docs/simpsons.png' height=100/>
+</center>
+
+# Simpsons Character Classification
 
 Using Tensorflow's Keras.
 
@@ -6,17 +10,9 @@ Using Tensorflow's Keras.
 
 ## Model
 
-The model is a simple Convolutional Neural Network with the following structure:
+The model is a Convolutional Neural Network, with 6 Conv2D's and MaxPooling.
 
-- Convolutional layer + RELU
-- Dropout + Batch Normalization
-- Convolutional layer + RELU
-- Max Pooling layer
-- Dropout + Batch Normalization
-- Structure above repeated 3 times ...
-- Flattening layer
-- (Dense + RELU + Dropout + Batch Normalization) x 2
-- Dense with SoftMax Activation
+The structure can be found [here](docs/model.png).
 
 ## Dataset
 
@@ -24,7 +20,10 @@ This repo uses the [Kaggle Simpsons Dataset](https://www.kaggle.com/alexattia/th
 
 One of the main challenges for this dataset was the data preprocessing, as there were several labels missing data, or some labels with two much data (i.e *Homer Simpson*).
 
-The data cleaning analisis can be found [here](server/notebooks/data_cleaning.ipynb).
+## Notebooks
+
+- [Data cleaning](notebooks/data_cleaning.ipynb)
+- [Testing visualizations](notebooks/test_visualization.ipynb)
 
 ## Train
 
