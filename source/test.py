@@ -63,7 +63,7 @@ def test(model_path, weights, testset_path):
     # write the classification report
     # this report includes only the test labels
     # which are less than the model labels
-    report_file_path = os.path.join(model_path, 'class_report.csv')
+    report_file_path = os.path.join(model_path, 'class_report.tsv')
     report = class_report(y_test_true,
                           y_pred_argmax,
                           labels=t_labels,

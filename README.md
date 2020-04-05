@@ -65,7 +65,10 @@ This script will generate the following reports:
 
 ## Results
 
-Here are some partial results:
+The [pretrained wheights](model/v1) included, gave the following results when tested:
+
+- [classification report](model/v1/class_report.tsv)
+- [test results](model/v1/test_results.csv)
 
 ##### Confusion matrix:
 
